@@ -1,11 +1,15 @@
 FROM mcr.microsoft.com/windows/servercore:ltsc2022
 
 COPY ./msys2-base-x86_64-20220319.sfx.exe /msys2.exe
+COPY ./test.sh /test.sh
+COPY ./artifacts/usr/bin/msys-2.0.dll /msys20.dll
 
 RUN powershell -Command \
   $ErrorActionPreference = 'Stop'; \
   $ProgressPreference = 'SilentlyContinue'; \
   /msys2.exe -y -oC:\; \
+  copy-item -force /msys20.dll c:\msys64\usr\bin\msys-2.0.dll; \
+  copy-item /test.sh c:\test.sh; \
   function msys() { C:\msys64\usr\bin\bash.exe @('-lc') + @Args; } \
   msys ' '; \
   msys 'pacman --noconfirm -Syuu'; \
