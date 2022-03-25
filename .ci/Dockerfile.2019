@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
-COPY ./msys2-base-x86_64-latest.sfx.exe /msys2.exe
+COPY ./msys2-base-x86_64-20220319.sfx.exe /msys2.exe
 
 RUN powershell -Command \
   $ErrorActionPreference = 'Stop'; \
