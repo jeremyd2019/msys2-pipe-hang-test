@@ -32,6 +32,6 @@ jobs:
       - name: Test
         run: |
           docker run msys2-base c:\windows\system32\whoami.exe /all
-          docker cp artifacts/usr/bin/msys-2.0.dll msys2-base:C:/msys64/usr/bin/msys-2.0.dll
-          docker cp test.sh msys2-base:C:/test.sh
+          docker cp artifacts/usr/bin/msys-2.0.dll msys2-base:/msys64/usr/bin/msys-2.0.dll
+          docker cp test.sh msys2-base:/test.sh
           docker run msys2-base c:\msys64\usr\bin\bash -lc "/c/test.sh"
