@@ -9,7 +9,6 @@ RUN powershell -Command \
   $ProgressPreference = 'SilentlyContinue'; \
   /msys2.exe -y -oC:\; \
   copy-item -force /msys20.dll c:\msys64\usr\bin\msys-2.0.dll; \
-  copy-item /test.sh c:\test.sh; \
   function msys() { C:\msys64\usr\bin\bash.exe @('-lc') + @Args; } \
   msys ' '; \
   msys 'pacman --noconfirm -Syuu'; \
